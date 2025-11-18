@@ -1,0 +1,37 @@
+import fetch from "node-fetch";
+
+const gameId = "o6gk45o1";
+
+async function getCategories() {
+  const url = `https://www.speedrun.com/api/v1/games/${gameId}/categories`;
+  const res = await fetch(url);
+  const json = await res.json();
+  return json.data; //list data
+}
+
+async function getWR(categoryId) {
+  const url = `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}?top=1`;
+  const res = await fetch(url);
+  const json = await res.json();
+  // Extract run data
+  const run = json.data.runs[0].run;
+  return {
+    category: categoryId,
+    player: run.players,
+    time: run.times.primary,
+    id: run.id,
+  };
+}
+
+async function main() {
+  const cats = await getCategories();
+  const wrs = [];
+  for (const c of cats) {
+    // skip if weird category or archived or not full game, if you want
+    const wr = await getWR(c.id);
+    wrs.push(wr);
+  }
+  console.log(wrs);
+}
+
+main();
