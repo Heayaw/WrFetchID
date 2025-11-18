@@ -32,18 +32,30 @@ const subCategories = [
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-async function getVersion10_2Id(categoryId) {
+async function getVersion10_2(categoryId) {
   const res = await fetch(`https://www.speedrun.com/api/v1/categories/${categoryId}/variables`);
   const json = await res.json();
-  const versionVar = Object.values(json.data).find(v => v.name.toLowerCase() === "versions");
+
+  const versionVar = json.data.find(v => v.name.toLowerCase() === "versions");
   if (!versionVar) return null;
-  const value10_2 = Object.entries(versionVar.values.values)
-    .find(([id, val]) => val.label === "10.2");
-  return value10_2 ? value10_2[0] : null;
+
+  const valueEntry = Object.entries(versionVar.values.values)
+    .find(([id, val]) => val.label === "Isle 10.2");
+
+  if (!valueEntry) return null;
+
+  return {
+    variableId: versionVar.id,
+    valueId: valueEntry[0]
+  };
 }
 
-async function getTopRuns(categoryId, versionId, top = 1) {
-  const url = `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}?top=${top}&var-${versionId}=${versionId}`;
+
+async function getTopRuns(categoryId, variableId, valueId, top = 1) {
+  const url =
+    `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}` +
+    `?top=${top}&var-${variableId}=${valueId}`;
+
   const res = await fetch(url);
   const json = await res.json();
 
@@ -69,28 +81,37 @@ async function main() {
     const runsForBase = {};
 
     for (const sub of subCategories) {
-      console.log(`  Fetching ${sub.name} (${sub.id})`);
-      const versionId = await getVersion10_2Id(sub.id);
-      if (!versionId) {
-        console.log(`    No 10.2 version found for ${sub.name}`);
+      console.log(`  Checking subcategory: ${sub.name}`);
+
+      const version = await getVersion10_2(sub.id);
+
+      if (!version) {
+        console.log(`    No '10.2' version found for ${sub.name}`);
         runsForBase[sub.name] = null;
         continue;
       }
 
-      const topRun = await getTopRuns(sub.id, versionId, 1); // just top run per subcategory
+      const topRun = await getTopRuns(
+        sub.id,
+        version.variableId,
+        version.valueId,
+        1
+      );
+
       runsForBase[sub.name] = topRun[0] || null;
-      await delay(300);
+
+      await delay(350);
     }
 
     results.push({
       categoryId: base.id,
       categoryName: base.name,
-      runs: runsForBase
+      subcategories: runsForBase
     });
   }
 
   fs.writeFileSync("wr.json", JSON.stringify(results, null, 2));
-  console.log("Done! Saved WRs for all base categories with subcategories (10.2) to wr.json");
+  console.log("Done! Saved WRs with 10.2 filtering to wr.json");
 }
 
 main();
