@@ -32,8 +32,18 @@ const subCategories = [
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-async function getTopRuns(categoryId, top = 1) {
-  const url = `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}?top=${top}`;
+async function getVersion10_2Id(categoryId) {
+  const res = await fetch(`https://www.speedrun.com/api/v1/categories/${categoryId}/variables`);
+  const json = await res.json();
+  const versionVar = Object.values(json.data).find(v => v.name.toLowerCase() === "versions");
+  if (!versionVar) return null;
+  const value10_2 = Object.entries(versionVar.values.values)
+    .find(([id, val]) => val.label === "10.2");
+  return value10_2 ? value10_2[0] : null;
+}
+
+async function getTopRuns(categoryId, versionId, top = 1) {
+  const url = `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}?top=${top}&var-${versionId}=${versionId}`;
   const res = await fetch(url);
   const json = await res.json();
 
@@ -41,12 +51,7 @@ async function getTopRuns(categoryId, top = 1) {
 
   return json.data.runs.map(entry => {
     const run = entry.run;
-    const players = run.players.map(p => {
-      if (p.rel === "user") return p.id;
-      if (p.rel === "guest") return p.name;
-      return "Unknown";
-    });
-
+    const players = run.players.map(p => p.rel === "user" ? p.id : p.name);
     return {
       runId: run.id,
       time: run.times.primary,
@@ -61,12 +66,18 @@ async function main() {
 
   for (const base of baseCategories) {
     console.log(`Fetching runs for base category: ${base.name}`);
-
     const runsForBase = {};
 
     for (const sub of subCategories) {
       console.log(`  Fetching ${sub.name} (${sub.id})`);
-      const topRun = await getTopRuns(sub.id, 1); // just top run per subcategory
+      const versionId = await getVersion10_2Id(sub.id);
+      if (!versionId) {
+        console.log(`    No 10.2 version found for ${sub.name}`);
+        runsForBase[sub.name] = null;
+        continue;
+      }
+
+      const topRun = await getTopRuns(sub.id, versionId, 1); // just top run per subcategory
       runsForBase[sub.name] = topRun[0] || null;
       await delay(300);
     }
@@ -79,7 +90,7 @@ async function main() {
   }
 
   fs.writeFileSync("wr.json", JSON.stringify(results, null, 2));
-  console.log("Done! Saved WRs for all base categories with subcategories to wr.json");
+  console.log("Done! Saved WRs for all base categories with subcategories (10.2) to wr.json");
 }
 
 main();
