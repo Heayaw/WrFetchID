@@ -2,7 +2,7 @@ name: Update WRs
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *"  # every hour
   workflow_dispatch:
 
 jobs:
@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
