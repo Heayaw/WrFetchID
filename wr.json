@@ -2,7 +2,7 @@
   {
     "categoryId": "rkl1rmqd",
     "categoryName": "Plane",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -12,7 +12,7 @@
   {
     "categoryId": "ndx64l1d",
     "categoryName": "Boat",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -22,7 +22,7 @@
   {
     "categoryId": "w2073mvk",
     "categoryName": "Facility",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -32,7 +32,7 @@
   {
     "categoryId": "wdm36oxk",
     "categoryName": "Truth",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -42,7 +42,7 @@
   {
     "categoryId": "vdol1g1d",
     "categoryName": "Balloon",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -52,7 +52,7 @@
   {
     "categoryId": "wkpx3e02",
     "categoryName": "Hangar",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -62,7 +62,7 @@
   {
     "categoryId": "mke648xd",
     "categoryName": "Orbit",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -72,7 +72,7 @@
   {
     "categoryId": "5dwwgvnd",
     "categoryName": "Sabotage",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -82,7 +82,7 @@
   {
     "categoryId": "jdrml652",
     "categoryName": "Mole",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -92,7 +92,7 @@
   {
     "categoryId": "jdzjw0gk",
     "categoryName": "Hidden",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -102,7 +102,7 @@
   {
     "categoryId": "wk6l86rk",
     "categoryName": "46C",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -112,7 +112,7 @@
   {
     "categoryId": "n2yygxm2",
     "categoryName": "92C",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -122,7 +122,7 @@
   {
     "categoryId": "7kjn644d",
     "categoryName": "CE",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -132,7 +132,7 @@
   {
     "categoryId": "xk9mv16d",
     "categoryName": "AC",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
@@ -142,7 +142,7 @@
   {
     "categoryId": "z27x1yzd",
     "categoryName": "Light Lamps",
-    "runs": {
+    "subcategories": {
       "1P No Portals": null,
       "1P Portals": null,
       "2P No Portals": null,
