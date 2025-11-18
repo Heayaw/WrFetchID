@@ -1,9 +1,8 @@
 import fetch from "node-fetch";
 import fs from "fs";
 
-const gameId = "o6gk45o1"; // Isle 10 game ID
+const gameId = "o6gk45o1";
 
-// Base categories (Plane, Boat, Facility, etc.)
 const baseCategories = [
   { id: "rkl1rmqd", name: "Plane" },
   { id: "ndx64l1d", name: "Boat" },
@@ -22,96 +21,95 @@ const baseCategories = [
   { id: "z27x1yzd", name: "Light Lamps" }
 ];
 
-// Subcategories we want for each base category
-const subCategories = [
-  { id: "rkl1rmqd", name: "1P No Portals" },
-  { id: "mke648xd", name: "1P Portals" },
-  { id: "w2073mvk", name: "2P No Portals" },
-  { id: "7kjn644d", name: "2P Portals" }
-];
+const subcategoryMap = {
+  "1P No Portals": { players: "1 Player", portals: "No Portals" },
+  "1P Portals": { players: "1 Player", portals: "Portals" },
+  "2P No Portals": { players: "2 Players", portals: "No Portals" },
+  "2P Portals": { players: "2 Players", portals: "Portals" }
+};
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-async function getVersion10_2(categoryId) {
-  const res = await fetch(`https://www.speedrun.com/api/v1/categories/${categoryId}/variables`);
+async function getCategoryVariables(baseId) {
+  const res = await fetch(`https://www.speedrun.com/api/v1/categories/${baseId}/variables`);
   const json = await res.json();
-
-  const versionVar = json.data.find(v => v.name.toLowerCase() === "versions");
-  if (!versionVar) return null;
-
-  const valueEntry = Object.entries(versionVar.values.values)
-    .find(([id, val]) => val.label === "Isle 10.2");
-
-  if (!valueEntry) return null;
-
-  return {
-    variableId: versionVar.id,
-    valueId: valueEntry[0]
-  };
+  return json.data || [];
 }
 
+function findVersionValueId(vars) {
+  const versionVar = vars.find(v => v.name.toLowerCase() === "versions");
+  if (!versionVar) return null;
+  const entry = Object.entries(versionVar.values.values)
+    .find(([id, val]) => val.label === "Isle 10.2");
+  return entry ? entry[0] : null;
+}
 
-async function getTopRuns(categoryId, variableId, valueId, top = 1) {
-  const url =
-    `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${categoryId}` +
-    `?top=${top}&var-${variableId}=${valueId}`;
+function findValueId(vars, variableName, labelContains) {
+  const v = vars.find(v => v.name.toLowerCase().includes(variableName.toLowerCase()));
+  if (!v) return null;
+  const entry = Object.entries(v.values.values)
+    .find(([id, val]) => val.label === labelContains);
+  return entry ? entry[0] : null;
+}
 
+async function getTopRun(baseId, filters) {
+  const params = new URLSearchParams();
+  for (const key in filters) {
+    params.append(`var-${filters[key].variableId}`, filters[key].valueId);
+  }
+  const url = `https://www.speedrun.com/api/v1/leaderboards/${gameId}/category/${baseId}?${params}`;
   const res = await fetch(url);
   const json = await res.json();
-
-  if (!json.data || !json.data.runs) return [];
-
-  return json.data.runs.map(entry => {
-    const run = entry.run;
-    const players = run.players.map(p => p.rel === "user" ? p.id : p.name);
-    return {
-      runId: run.id,
-      time: run.times.primary,
-      players,
-      weblink: run.weblink
-    };
-  });
+  if (!json.data || !json.data.runs || json.data.runs.length === 0) return null;
+  const run = json.data.runs[0].run;
+  const players = run.players.map(p => p.rel === "user" ? p.id : p.name);
+  return {
+    runId: run.id,
+    time: run.times.primary,
+    players,
+    weblink: run.weblink
+  };
 }
 
 async function main() {
   const results = [];
-
   for (const base of baseCategories) {
-    console.log(`Fetching runs for base category: ${base.name}`);
-    const runsForBase = {};
-
-    for (const sub of subCategories) {
-      console.log(`  Checking subcategory: ${sub.name}`);
-
-      const version = await getVersion10_2(sub.id);
-
-      if (!version) {
-        console.log(`    No '10.2' version found for ${sub.name}`);
-        runsForBase[sub.name] = null;
+    const vars = await getCategoryVariables(base.id);
+    const versionValueId = findVersionValueId(vars);
+    if (!versionValueId) continue;
+    const resultsForBase = {};
+    for (const [subName, mapping] of Object.entries(subcategoryMap)) {
+      const playerValId = findValueId(vars, "player", mapping.players);
+      const portalsValId = findValueId(vars, "portals", mapping.portals);
+      if (!playerValId || !portalsValId) {
+        resultsForBase[subName] = null;
         continue;
       }
-
-      const topRun = await getTopRuns(
-        sub.id,
-        version.variableId,
-        version.valueId,
-        1
-      );
-
-      runsForBase[sub.name] = topRun[0] || null;
-
-      await delay(350);
+      const filters = {
+        version: {
+          variableId: vars.find(v => v.name.toLowerCase() === "versions").id,
+          valueId: versionValueId
+        },
+        player: {
+          variableId: vars.find(v => v.name.toLowerCase().includes("player")).id,
+          valueId: playerValId
+        },
+        portals: {
+          variableId: vars.find(v => v.name.toLowerCase().includes("portal")).id,
+          valueId: portalsValId
+        }
+      };
+      const run = await getTopRun(base.id, filters);
+      resultsForBase[subName] = run;
+      await delay(250);
     }
-
     results.push({
       categoryId: base.id,
       categoryName: base.name,
-      subcategories: runsForBase
+      runs: resultsForBase
     });
   }
-
   fs.writeFileSync("wr.json", JSON.stringify(results, null, 2));
-  console.log("Done! Saved WRs with 10.2 filtering to wr.json");
 }
 
 main();
