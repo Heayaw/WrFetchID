@@ -5,12 +5,14 @@
   <style>
     body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
     .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+    .lost { color: #f55; margin-top: 6px; }
     a { color: #4af; text-decoration: none; }
   </style>
 </head>
 <body>
   <h1>Roblox: Isle 10 — All World Records</h1>
   <div id="wrs"></div>
+  <div id="lost-records"></div>
 
   <script>
     const usernameCache = {};
@@ -27,11 +29,14 @@
     async function loadWRs() {
       const res = await fetch("wr.json");
       let data = await res.json();
-
-      // If it's a single category object, wrap it in an array
       if (!Array.isArray(data)) data = [data];
 
       const container = document.getElementById("wrs");
+      const lostContainer = document.getElementById("lost-records");
+
+      // Get previous snapshot from localStorage
+      const previousWRs = JSON.parse(localStorage.getItem("wrSnapshot") || "{}");
+      const newSnapshot = {};
 
       for (const category of data) {
         const div = document.createElement("div");
@@ -41,15 +46,40 @@
         for (const [subName, run] of Object.entries(category.runs)) {
           if (!run) {
             runsHtml += `<strong>${subName}</strong>: No WR yet<br>`;
-          } else {
-            const usernames = await Promise.all(run.players.map(getUsername));
-            runsHtml += `<strong>${subName}</strong>: ${run.time} — Players: ${usernames.join(", ")} <a href="${run.weblink}" target="_blank">View Run</a><br>`;
+            continue;
           }
+
+          const usernames = await Promise.all(run.players.map(getUsername));
+          runsHtml += `<strong>${subName}</strong>: ${run.time} — Players: ${usernames.join(", ")} <a href="${run.weblink}" target="_blank">View Run</a><br>`;
+
+          // Check if any previous player lost this record
+          const prevRunPlayers = previousWRs[category.categoryId]?.runs?.[subName]?.players || [];
+          prevRunPlayers.forEach(prevPlayer => {
+            if (!run.players.includes(prevPlayer)) {
+              getUsername(prevPlayer).then(name => {
+                const lostDiv = document.createElement("div");
+                lostDiv.className = "lost";
+                lostDiv.textContent = `${name} — ${subName} — taken`;
+                lostContainer.appendChild(lostDiv);
+              });
+            }
+          });
         }
 
         div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
         container.appendChild(div);
+
+        // Save current category to new snapshot
+        newSnapshot[category.categoryId] = { runs: {} };
+        for (const [subName, run] of Object.entries(category.runs)) {
+          newSnapshot[category.categoryId].runs[subName] = {
+            players: run?.players || []
+          };
+        }
       }
+
+      // Save current snapshot for next refresh
+      localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
     }
 
     loadWRs();
