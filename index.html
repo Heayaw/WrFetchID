@@ -78,6 +78,7 @@
 
       const previousWRs = JSON.parse(localStorage.getItem("wrSnapshot") || "{}");
       const newSnapshot = {};
+      let anyChanges = false;
 
       for (const category of data) {
         const div = document.createElement("div");
@@ -101,6 +102,7 @@
 
           prevRunPlayers.forEach(prevPlayer => {
             if (!run.players.includes(prevPlayer)) {
+              anyChanges = true;
               getUsername(prevPlayer).then(name => {
                 const lostDiv = document.createElement("div");
                 lostDiv.className = "lost";
@@ -112,6 +114,7 @@
 
           run.players.forEach(currPlayer => {
             if (!prevRunPlayers.includes(currPlayer)) {
+              anyChanges = true;
               getUsername(currPlayer).then(name => {
                 const gainedDiv = document.createElement("div");
                 gainedDiv.className = "gained";
@@ -130,7 +133,9 @@
         container.appendChild(div);
       }
 
-      localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
+      if (anyChanges) {
+        localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
+      }
     }
 
     loadWRs();
