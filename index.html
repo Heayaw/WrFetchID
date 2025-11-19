@@ -85,6 +85,7 @@
         div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
         container.appendChild(div);
 
+        // Save current category to new snapshot
         newSnapshot[category.categoryId] = { runs: {} };
         for (const [subName, run] of Object.entries(category.runs)) {
           newSnapshot[category.categoryId].runs[subName] = {
@@ -92,6 +93,8 @@
           };
         }
       }
+
+      // Save current snapshot for next refresh
       localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
     }
 
