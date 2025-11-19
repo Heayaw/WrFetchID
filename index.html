@@ -13,15 +13,24 @@
   <div id="wrs"></div>
 
   <script>
+    const usernameCache = {};
+
     async function getUsername(id) {
+      if (usernameCache[id]) return usernameCache[id];
       const res = await fetch(`https://www.speedrun.com/api/v1/users/${id}`);
       const data = await res.json();
-      return data.data.names.international;
+      const name = data.data.names.international;
+      usernameCache[id] = name;
+      return name;
     }
 
     async function loadWRs() {
       const res = await fetch("wr.json");
-      const data = await res.json();
+      let data = await res.json();
+
+      // If it's a single category object, wrap it in an array
+      if (!Array.isArray(data)) data = [data];
+
       const container = document.getElementById("wrs");
 
       for (const category of data) {
@@ -33,7 +42,6 @@
           if (!run) {
             runsHtml += `<strong>${subName}</strong>: No WR yet<br>`;
           } else {
-            // Fetch all usernames for this run
             const usernames = await Promise.all(run.players.map(getUsername));
             runsHtml += `<strong>${subName}</strong>: ${run.time} — Players: ${usernames.join(", ")} <a href="${run.weblink}" target="_blank">View Run</a><br>`;
           }
