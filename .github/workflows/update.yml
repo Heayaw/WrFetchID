@@ -10,28 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo with proper token for private repos
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: false  # ensures the push uses the token
+          persist-credentials: false
 
-      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Install dependencies
       - name: Install node-fetch
         run: npm install node-fetch@3
 
-      # Fetch WRs
       - name: Fetch WRs
         run: node fetch_wr.js
 
-      # Commit & push wr.json
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions"
