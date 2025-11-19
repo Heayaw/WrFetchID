@@ -3,50 +3,200 @@
     "categoryId": "rkl1rmqd",
     "categoryName": "Plane",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "yl5qpqrz",
+        "time": "PT2M39.450S",
+        "players": [
+          "j0wmkn38"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yl5qpqrz"
+      },
+      "1P Portals": {
+        "runId": "y2r7q65m",
+        "time": "PT2M32.867S",
+        "players": [
+          "xyqzm9z8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y2r7q65m"
+      },
+      "2P No Portals": {
+        "runId": "yv51wnom",
+        "time": "PT2M33.583S",
+        "players": [
+          "j0wmkn38",
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yv51wnom"
+      },
+      "2P Portals": {
+        "runId": "y2rvn09m",
+        "time": "PT2M17.450S",
+        "players": [
+          "j0wmkn38",
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y2rvn09m"
+      }
     }
   },
   {
     "categoryId": "ndx64l1d",
     "categoryName": "Boat",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "zq5gr61z",
+        "time": "PT6M40.883S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zq5gr61z"
+      },
+      "1P Portals": {
+        "runId": "yl5rlknz",
+        "time": "PT3M51.767S",
+        "players": [
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yl5rlknz"
+      },
+      "2P No Portals": {
+        "runId": "m7v8d14m",
+        "time": "PT5M35.450S",
+        "players": [
+          "jpzo6y2x",
+          "8r115qgj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/m7v8d14m"
+      },
+      "2P Portals": {
+        "runId": "mkr539lz",
+        "time": "PT4M51.850S",
+        "players": [
+          "j0wyll38",
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/mkr539lz"
+      }
     }
   },
   {
     "categoryId": "w2073mvk",
     "categoryName": "Facility",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "yv54wl4m",
+        "time": "PT6M53.667S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yv54wl4m"
+      },
+      "1P Portals": {
+        "runId": "mepo383y",
+        "time": "PT5M6.167S",
+        "players": [
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/mepo383y"
+      },
+      "2P No Portals": {
+        "runId": "zq5g24xz",
+        "time": "PT5M38.850S",
+        "players": [
+          "j0wmkn38",
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zq5g24xz"
+      },
+      "2P Portals": {
+        "runId": "yw270o9y",
+        "time": "PT3M56.367S",
+        "players": [
+          "jpoq9y58",
+          "8v7907v8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yw270o9y"
+      }
     }
   },
   {
     "categoryId": "wdm36oxk",
     "categoryName": "Truth",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "mkr5ljlz",
+        "time": "PT22M31.367S",
+        "players": [
+          "xyqzm9z8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/mkr5ljlz"
+      },
+      "1P Portals": {
+        "runId": "m32r92dy",
+        "time": "PT21M11.467S",
+        "players": [
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/m32r92dy"
+      },
+      "2P No Portals": {
+        "runId": "y68dd0jz",
+        "time": "PT19M29.383S",
+        "players": [
+          "jpzo6y2x",
+          "x351kd7j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y68dd0jz"
+      },
+      "2P Portals": {
+        "runId": "yv5o2v4m",
+        "time": "PT18M51.350S",
+        "players": [
+          "jpoq9y58",
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yv5o2v4m"
+      }
     }
   },
   {
     "categoryId": "vdol1g1d",
     "categoryName": "Balloon",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "yv569qxm",
+        "time": "PT5M4.150S",
+        "players": [
+          "j0wmkn38"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yv569qxm"
+      },
+      "1P Portals": {
+        "runId": "y8n22w5y",
+        "time": "PT4M10.683S",
+        "players": [
+          "j0wmkn38"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y8n22w5y"
+      },
+      "2P No Portals": {
+        "runId": "y2r710wm",
+        "time": "PT4M18.700S",
+        "players": [
+          "xyqzm9z8",
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y2r710wm"
+      },
+      "2P Portals": {
+        "runId": "y689646z",
+        "time": "PT3M2.917S",
+        "players": [
+          "jpzo6y2x",
+          "jn109918"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y689646z"
+      }
     }
   },
   {
@@ -54,18 +204,56 @@
     "categoryName": "Hangar",
     "runs": {
       "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P Portals": {
+        "runId": "z008lqez",
+        "time": "PT24M35.417S",
+        "players": [
+          "xzylp00j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z008lqez"
+      },
+      "2P No Portals": {
+        "runId": "z171xegz",
+        "time": "PT24M4.167S",
+        "players": [
+          "jpzo6y2x",
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z171xegz"
+      },
+      "2P Portals": {
+        "runId": "y2r5px5m",
+        "time": "PT22M36.700S",
+        "players": [
+          "jpzo6y2x",
+          "jn109918"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y2r5px5m"
+      }
     }
   },
   {
     "categoryId": "mke648xd",
     "categoryName": "Orbit",
     "runs": {
-      "1P No Portals": null,
+      "1P No Portals": {
+        "runId": "zp5l7lry",
+        "time": "PT38M52.550S",
+        "players": [
+          "jm69nmy8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zp5l7lry"
+      },
       "1P Portals": null,
-      "2P No Portals": null,
+      "2P No Portals": {
+        "runId": "y9epqjnz",
+        "time": "PT40M32.200S",
+        "players": [
+          "x351kd7j",
+          "j5920zwx"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y9epqjnz"
+      },
       "2P Portals": null
     }
   },
@@ -73,40 +261,160 @@
     "categoryId": "5dwwgvnd",
     "categoryName": "Sabotage",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "m7v78jem",
+        "time": "PT7M8.750S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/m7v78jem"
+      },
+      "1P Portals": {
+        "runId": "zx5ol6km",
+        "time": "PT10M10.783S",
+        "players": [
+          "x3wyqgkj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zx5ol6km"
+      },
+      "2P No Portals": {
+        "runId": "z5679kny",
+        "time": "PT4M42.617S",
+        "players": [
+          "jpzo6y2x",
+          "8dpgmoo8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z5679kny"
+      },
+      "2P Portals": {
+        "runId": "z56jewdy",
+        "time": "PT3M28.017S",
+        "players": [
+          "j0wmkn38",
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z56jewdy"
+      }
     }
   },
   {
     "categoryId": "jdrml652",
     "categoryName": "Mole",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "z17x809z",
+        "time": "PT4M39.217S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z17x809z"
+      },
+      "1P Portals": {
+        "runId": "zp583vgy",
+        "time": "PT3M8.367S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zp583vgy"
+      },
+      "2P No Portals": {
+        "runId": "mep74jqy",
+        "time": "PT3M48.433S",
+        "players": [
+          "j9yzw17x",
+          "86p6q30j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/mep74jqy"
+      },
+      "2P Portals": {
+        "runId": "mr5n4wdy",
+        "time": "PT2M28.217S",
+        "players": [
+          "jpzo6y2x",
+          "jn109918"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/mr5n4wdy"
+      }
     }
   },
   {
     "categoryId": "jdzjw0gk",
     "categoryName": "Hidden",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "yd44qnqy",
+        "time": "PT5M18.500S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yd44qnqy"
+      },
+      "1P Portals": {
+        "runId": "zn5oq43z",
+        "time": "PT2M32.267S",
+        "players": [
+          "jn1eddd8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zn5oq43z"
+      },
+      "2P No Portals": {
+        "runId": "zg9rkn0m",
+        "time": "PT4M55.867S",
+        "players": [
+          "xyqzm9z8",
+          "x77zwwqx"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zg9rkn0m"
+      },
+      "2P Portals": {
+        "runId": "z5wwk1dz",
+        "time": "PT2M35.433S",
+        "players": [
+          "jpzo6y2x",
+          "j9y7rlox"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z5wwk1dz"
+      }
     }
   },
   {
     "categoryId": "wk6l86rk",
     "categoryName": "46C",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "y9w3ngkz",
+        "time": "PT12M32.733S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y9w3ngkz"
+      },
+      "1P Portals": {
+        "runId": "zq5vgnxz",
+        "time": "PT10M32.317S",
+        "players": [
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zq5vgnxz"
+      },
+      "2P No Portals": {
+        "runId": "z0k71k9m",
+        "time": "PT6M58.950S",
+        "players": [
+          "xzyww1ej",
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z0k71k9m"
+      },
+      "2P Portals": {
+        "runId": "yw5q3r9y",
+        "time": "PT6M28.467S",
+        "players": [
+          "jpzo6y2x",
+          "xzyww1ej"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yw5q3r9y"
+      }
     }
   },
   {
@@ -123,30 +431,113 @@
     "categoryId": "7kjn644d",
     "categoryName": "CE",
     "runs": {
-      "1P No Portals": null,
+      "1P No Portals": {
+        "runId": "yj7gdjgy",
+        "time": "PT34M41.700S",
+        "players": [
+          "x351kd7j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yj7gdjgy"
+      },
       "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "2P No Portals": {
+        "runId": "y8nvp95y",
+        "time": "PT21M25.517S",
+        "players": [
+          "jpzo6y2x",
+          "x351kd7j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y8nvp95y"
+      },
+      "2P Portals": {
+        "runId": "yw50xd0y",
+        "time": "PT20M46.117S",
+        "players": [
+          "jpzo6y2x",
+          "x351kd7j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yw50xd0y"
+      }
     }
   },
   {
     "categoryId": "xk9mv16d",
     "categoryName": "AC",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "y8nex9dy",
+        "time": "PT7M43.533S",
+        "players": [
+          "jpyewd5j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y8nex9dy"
+      },
+      "1P Portals": {
+        "runId": "y68dx41z",
+        "time": "PT7M16.400S",
+        "players": [
+          "j5r5mdgx"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y68dx41z"
+      },
+      "2P No Portals": {
+        "runId": "y9w10rez",
+        "time": "PT4M39.517S",
+        "players": [
+          "jpzo6y2x",
+          "8d9rppox"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y9w10rez"
+      },
+      "2P Portals": {
+        "runId": "y2r9jowm",
+        "time": "PT3M14.233S",
+        "players": [
+          "jpoq9y58",
+          "jpzo6y2x"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y2r9jowm"
+      }
     }
   },
   {
     "categoryId": "z27x1yzd",
     "categoryName": "Light Lamps",
     "runs": {
-      "1P No Portals": null,
-      "1P Portals": null,
-      "2P No Portals": null,
-      "2P Portals": null
+      "1P No Portals": {
+        "runId": "z0007koz",
+        "time": "PT9M58.700S",
+        "players": [
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z0007koz"
+      },
+      "1P Portals": {
+        "runId": "zn535q3z",
+        "time": "PT4M54.467S",
+        "players": [
+          "j0wmkn38"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zn535q3z"
+      },
+      "2P No Portals": {
+        "runId": "y8n3dr1y",
+        "time": "PT4M38.350S",
+        "players": [
+          "jpzo6y2x",
+          "jpoq9y58"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/y8n3dr1y"
+      },
+      "2P Portals": {
+        "runId": "zq5g29rz",
+        "time": "PT2M50.983S",
+        "players": [
+          "j0wmkn38",
+          "8rm6nogj"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zq5g29rz"
+      }
     }
   }
 ]
