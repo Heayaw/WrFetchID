@@ -1,58 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Isle 10 World Records</title>
-    <style>
-        body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
-        .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
-        a { color: #4af; }
-    </style>
+  <title>Isle 10 World Records</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
+    .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+    a { color: #4af; text-decoration: none; }
+  </style>
 </head>
 <body>
-<h1>Roblox: Isle 10 — All World Records</h1>
-<div id="wrs"></div>
+  <h1>Roblox: Isle 10 — All World Records</h1>
+  <div id="wrs"></div>
 
-<script>
-fetch("wr.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("wrs");
+  <script>
+    fetch("wr.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("wrs");
 
-    data.forEach(category => {
-      const div = document.createElement("div");
-      div.className = "wr-box";
+        data.forEach(category => {
+          const div = document.createElement("div");
+          div.className = "wr-box";
 
-      // Get all runs and ignore nulls
-      const runs = Object.values(category.runs).filter(r => r !== null);
+          let runsHtml = "";
+          for (const [subName, run] of Object.entries(category.runs)) {
+            if (!run) {
+              runsHtml += `<strong>${subName}</strong>: No WR yet<br>`;
+            } else {
+              runsHtml += `<strong>${subName}</strong>: ${run.time} — Players: ${run.players.join(", ")} <a href="${run.weblink}" target="_blank">View Run</a><br>`;
+            }
+          }
 
-      if (runs.length === 0) {
-        div.innerHTML = `
-          <strong>${category.categoryName}</strong><br>
-          WR Time: No WR yet<br>
-          Players: -<br>
-        `;
-      } else {
-        // Pick fastest run
-        const fastest = runs.reduce((a, b) => {
-          const parseTime = t => {
-            const m = t.match(/PT(?:(\d+)M)?([\d.]+)S/);
-            return (parseFloat(m[1]||0)*60)+parseFloat(m[2]);
-          };
-          return parseTime(a.time) < parseTime(b.time) ? a : b;
+          div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
+          container.appendChild(div);
         });
-
-        div.innerHTML = `
-          <strong>${category.categoryName}</strong><br>
-          WR Time: ${fastest.time}<br>
-          Players: ${fastest.players.join(", ")}<br>
-          <a href="${fastest.weblink}" target="_blank">View Run</a>
-        `;
-      }
-
-      container.appendChild(div);
-    });
-  });
-</script>
-
+      });
+  </script>
 </body>
 </html>
