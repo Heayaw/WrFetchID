@@ -3,45 +3,13 @@
 <head>
   <title>Isle 10 World Records</title>
   <style>
-    body {
-      font-family: Arial;
-      padding: 20px;
-      background: #111;
-      color: #fff;
-      margin-right: 320px;
-    }
-
-    .wr-box {
-      background: #222;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-    }
-
+    body { font-family: Arial; padding: 20px; background: #111; color: #fff; margin-right: 320px; }
+    .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
     .lost { color: #f55; margin-top: 6px; }
     .gained { color: #5f5; margin-top: 6px; }
-
     a { color: #4af; text-decoration: none; }
-
-    #side-panel {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 280px;
-      bottom: 20px;
-      overflow-y: auto;
-      background: #1b1b1b;
-      border-left: 2px solid #333;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    #changes-title {
-      font-size: 20px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 4px;
-    }
+    #side-panel { position: fixed; top: 20px; right: 20px; width: 280px; bottom: 20px; overflow-y: auto; background: #1b1b1b; border-left: 2px solid #333; padding: 15px; border-radius: 8px; }
+    #changes-title { font-size: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 4px; }
   </style>
 </head>
 <body>
@@ -83,12 +51,10 @@
       for (const category of data) {
         const div = document.createElement("div");
         div.className = "wr-box";
-
         newSnapshot[category.categoryId] = { runs: {} };
 
         let runsHtml = "";
         for (const [subName, run] of Object.entries(category.runs)) {
-
           if (!run) {
             runsHtml += `<strong>${subName}</strong>: No WR yet<br>`;
             newSnapshot[category.categoryId].runs[subName] = { players: [] };
@@ -100,6 +66,7 @@
 
           const prevRunPlayers = previousWRs[category.categoryId]?.runs?.[subName]?.players || [];
 
+          // Detect lost WRs
           prevRunPlayers.forEach(prevPlayer => {
             if (!run.players.includes(prevPlayer)) {
               anyChanges = true;
@@ -112,6 +79,7 @@
             }
           });
 
+          // Detect gained WRs
           run.players.forEach(currPlayer => {
             if (!prevRunPlayers.includes(currPlayer)) {
               anyChanges = true;
@@ -124,18 +92,15 @@
             }
           });
 
-          newSnapshot[category.categoryId].runs[subName] = {
-            players: run.players
-          };
+          newSnapshot[category.categoryId].runs[subName] = { players: run.players };
         }
 
         div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
         container.appendChild(div);
       }
 
-      if (anyChanges) {
-        localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
-      }
+      // Always update snapshot
+      localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
     }
 
     loadWRs();
