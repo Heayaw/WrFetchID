@@ -3,17 +3,56 @@
 <head>
   <title>Isle 10 World Records</title>
   <style>
-    body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
-    .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      margin-right: 320px;
+    }
+
+    .wr-box {
+      background: #222;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
     .lost { color: #f55; margin-top: 6px; }
     .gained { color: #5f5; margin-top: 6px; }
+
     a { color: #4af; text-decoration: none; }
+
+    #side-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 280px;
+      bottom: 20px;
+      overflow-y: auto;
+      background: #1b1b1b;
+      border-left: 2px solid #333;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    #changes-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 4px;
+    }
   </style>
 </head>
 <body>
   <h1>Roblox: Isle 10 — All World Records</h1>
+
   <div id="wrs"></div>
-  <div id="changes"></div>
+
+  <div id="side-panel">
+    <div id="changes-title">Record Changes</div>
+    <div id="changes"></div>
+  </div>
 
   <script>
     const usernameCache = {};
@@ -36,7 +75,6 @@
       const changesContainer = document.getElementById("changes");
       changesContainer.innerHTML = "";
 
-      // Get previous snapshot from localStorage
       const previousWRs = JSON.parse(localStorage.getItem("wrSnapshot") || "{}");
       const newSnapshot = {};
 
@@ -54,10 +92,8 @@
           const usernames = await Promise.all(run.players.map(getUsername));
           runsHtml += `<strong>${subName}</strong>: ${run.time} — Players: ${usernames.join(", ")} <a href="${run.weblink}" target="_blank">View Run</a><br>`;
 
-          // Track lost/gained records
           const prevRunPlayers = previousWRs[category.categoryId]?.runs?.[subName]?.players || [];
 
-          // Lost WRs
           prevRunPlayers.forEach(prevPlayer => {
             if (!run.players.includes(prevPlayer)) {
               getUsername(prevPlayer).then(name => {
@@ -69,7 +105,6 @@
             }
           });
 
-          // Gained WRs
           run.players.forEach(currPlayer => {
             if (!prevRunPlayers.includes(currPlayer)) {
               getUsername(currPlayer).then(name => {
@@ -85,20 +120,4 @@
         div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
         container.appendChild(div);
 
-        // Save current category to new snapshot
-        newSnapshot[category.categoryId] = { runs: {} };
-        for (const [subName, run] of Object.entries(category.runs)) {
-          newSnapshot[category.categoryId].runs[subName] = {
-            players: run?.players || []
-          };
-        }
-      }
-
-      // Save current snapshot for next refresh
-      localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
-    }
-
-    loadWRs();
-  </script>
-</body>
-</html>
+        newSna
