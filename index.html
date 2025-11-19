@@ -5,6 +5,8 @@
     <style>
         body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
         .wr-box { background: #222; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+        .has-wr { border-left: 5px solid #4af; }
+        .no-wr { border-left: 5px solid #f44; color: #aaa; }
         a { color: #4af; }
     </style>
 </head>
@@ -17,22 +19,23 @@ fetch("wr.json")
   .then(r => r.json())
   .then(data => {
       const container = document.getElementById("wrs");
-      data.forEach(wr => {
 
+      data.forEach(wr => {
           const div = document.createElement("div");
-          div.className = "wr-box";
+
+          const hasWR = wr.time && wr.time !== "N/A" && wr.players && wr.players.length > 0;
+          div.className = "wr-box " + (hasWR ? "has-wr" : "no-wr");
 
           div.innerHTML = `
               <strong>${wr.categoryName}</strong><br>
-              WR Time: ${wr.time}<br>
-              Players: ${wr.players.map(p => p.id).join(", ")}<br>
-              <a href="${wr.weblink}" target="_blank">View Run</a>
+              WR Time: ${hasWR ? wr.time : "No WR yet"}<br>
+              Players: ${hasWR ? wr.players.map(p => p.id).join(", ") : "-"}<br>
+              ${hasWR ? `<a href="${wr.weblink}" target="_blank">View Run</a>` : ""}
           `;
 
           container.appendChild(div);
       });
   });
 </script>
-
 </body>
 </html>
