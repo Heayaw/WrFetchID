@@ -73,6 +73,7 @@
 
       const container = document.getElementById("wrs");
       const changesContainer = document.getElementById("changes");
+      container.innerHTML = "";
       changesContainer.innerHTML = "";
 
       const previousWRs = JSON.parse(localStorage.getItem("wrSnapshot") || "{}");
@@ -82,10 +83,14 @@
         const div = document.createElement("div");
         div.className = "wr-box";
 
+        newSnapshot[category.categoryId] = { runs: {} };
+
         let runsHtml = "";
         for (const [subName, run] of Object.entries(category.runs)) {
+
           if (!run) {
             runsHtml += `<strong>${subName}</strong>: No WR yet<br>`;
+            newSnapshot[category.categoryId].runs[subName] = { players: [] };
             continue;
           }
 
@@ -115,9 +120,20 @@
               });
             }
           });
+
+          newSnapshot[category.categoryId].runs[subName] = {
+            players: run.players
+          };
         }
 
         div.innerHTML = `<strong>${category.categoryName}</strong><br>${runsHtml}`;
         container.appendChild(div);
+      }
 
-        newSna
+      localStorage.setItem("wrSnapshot", JSON.stringify(newSnapshot));
+    }
+
+    loadWRs();
+  </script>
+</body>
+</html>
