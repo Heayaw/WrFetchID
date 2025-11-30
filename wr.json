@@ -203,7 +203,14 @@
     "categoryId": "wkpx3e02",
     "categoryName": "Hangar",
     "runs": {
-      "1P No Portals": null,
+      "1P No Portals": {
+        "runId": "zx0ejkgz",
+        "time": "PT26M29.400S",
+        "players": [
+          "j59l7gwx"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zx0ejkgz"
+      },
       "1P Portals": {
         "runId": "z008lqez",
         "time": "PT24M35.417S",
@@ -522,7 +529,7 @@
     "runs": {
       "1P No Portals": {
         "runId": "z17px2rz",
-        "time": "PT9M49.350S",
+        "time": "PT9M38.983S",
         "players": [
           "8dpgmoo8"
         ],
