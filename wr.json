@@ -462,7 +462,14 @@
         ],
         "weblink": "http://www.speedrun.com/roblox_isle_10/run/yj7gdjgy"
       },
-      "1P Portals": null,
+      "1P Portals": {
+        "runId": "zx584pkm",
+        "time": "PT45M51.833S",
+        "players": [
+          "j21emeo8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zx584pkm"
+      },
       "2P No Portals": {
         "runId": "y8nvp95y",
         "time": "PT21M25.517S",
