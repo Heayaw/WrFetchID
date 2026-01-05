@@ -60,13 +60,13 @@
         "weblink": "http://www.speedrun.com/roblox_isle_10/run/m320vrgy"
       },
       "2P No Portals": {
-        "runId": "zp56xvgy",
-        "time": "PT5M13.700S",
+        "runId": "zg9okgdm",
+        "time": "PT5M11.067S",
         "players": [
-          "8l6qewv8",
-          "8676m50j"
+          "jpzo6y2x",
+          "x7wp7gv8"
         ],
-        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zp56xvgy"
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zg9okgdm"
       },
       "2P Portals": {
         "runId": "zx58v0km",
@@ -469,7 +469,14 @@
     "categoryId": "7kjn644d",
     "categoryName": "CE",
     "runs": {
-      "1P No Portals": null,
+      "1P No Portals": {
+        "runId": "zn5x899z",
+        "time": "PT31M40.883S",
+        "players": [
+          "8r7pgr6j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zn5x899z"
+      },
       "1P Portals": null,
       "2P No Portals": {
         "runId": "y8nvp95y",
