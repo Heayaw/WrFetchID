@@ -229,13 +229,13 @@
         "weblink": "http://www.speedrun.com/roblox_isle_10/run/y68onepz"
       },
       "2P Portals": {
-        "runId": "z56g0wjy",
-        "time": "PT22M27.083S",
+        "runId": "zq5q17xz",
+        "time": "PT21M57.150S",
         "players": [
-          "xzylp00j",
-          "8rm6nogj"
+          "jpzo6y2x",
+          "x7wp7gv8"
         ],
-        "weblink": "http://www.speedrun.com/roblox_isle_10/run/z56g0wjy"
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zq5q17xz"
       }
     }
   },
@@ -477,7 +477,14 @@
         ],
         "weblink": "http://www.speedrun.com/roblox_isle_10/run/zn5x899z"
       },
-      "1P Portals": null,
+      "1P Portals": {
+        "runId": "zp5x8xxy",
+        "time": "PT35M51.950S",
+        "players": [
+          "jpp11l4j"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/zp5x8xxy"
+      },
       "2P No Portals": {
         "runId": "y8nvp95y",
         "time": "PT21M25.517S",
