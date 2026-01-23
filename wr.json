@@ -251,7 +251,14 @@
         ],
         "weblink": "http://www.speedrun.com/roblox_isle_10/run/mkre9nlz"
       },
-      "1P Portals": null,
+      "1P Portals": {
+        "runId": "yl55epxz",
+        "time": "PT46M16.133S",
+        "players": [
+          "8ezr9md8"
+        ],
+        "weblink": "http://www.speedrun.com/roblox_isle_10/run/yl55epxz"
+      },
       "2P No Portals": {
         "runId": "y2r2125m",
         "time": "PT33M3.767S",
